@@ -1,5 +1,5 @@
 
-require("full_adder.bit_infix")
+require("bit_infix")
 
 local fulladder1bit = {}
 
