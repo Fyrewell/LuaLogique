@@ -6,8 +6,8 @@ local fulladder1bit = {}
 local FullAdder1Bit = {}
 
 function FullAdder1Bit:execute ()
-  self.out.sum = (self.inp.a -bxor- self.inp.b) -bxor- self.inp.cin
-  self.out.cout = (self.inp.a -band- self.inp.b) -bor- (self.inp.cin -band- (self.inp.a -bxor- self.inp.b))  
+  self.out.sum = (self.inp.a -bitxor- self.inp.b) -bitxor- self.inp.cin
+  self.out.cout = (self.inp.a -bitand- self.inp.b) -bitor- (self.inp.cin -bitand- (self.inp.a -bitxor- self.inp.b))  
 end
 
 function fulladder1bit.new (Tin)

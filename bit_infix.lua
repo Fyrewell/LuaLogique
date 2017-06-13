@@ -1,6 +1,4 @@
 
-local bit = require("bit")
-
 local sm = setmetatable
 
 local function infix(f)
@@ -8,9 +6,12 @@ local function infix(f)
   return sm({}, { __sub = function(a, _) return sm({ a }, mt) end })
 end
 
-shl = infix(function(a, b) return a*(2^b) end)
-bnot = infix(function(a, b) return bit.bnot(a,b) end)
-bor = infix(function(a, b) return bit.bor(a,b) end)
-band = infix(function(a, b) return bit.band(a,b) end)
-bxor = infix(function(a, b) return bit.bxor(a, b) end)
-bnand = infix(function(a, b) return bit.bnand(a, b) end)
+function bitnot(x)
+    return x == 0 and 1 or 0
+end
+
+bitor = infix(function(a, b) return (a==1 or b==1) and 1 or 0 end)
+bitand = infix(function(a, b) return (a == b and a==1) and 1 or 0 end)
+bitxor = infix(function(a, b) return a ~= b and 1 or 0 end)
+bitnor = infix(function(a, b) return bitnot(a -bitor- b) end)
+bitnand = infix(function(a, b) return bitnot(a -bitand- b) end)
