@@ -6,8 +6,10 @@ local ff_sr = {}
 local FFSR = {}
 
 function FFSR:execute (NewTin)
-  self.out.q = (NewTin.s or self.inp.s) -bitnand- self.out.qn
-  self.out.qn = (NewTin.r or self.inp.r) -bitnand- self.out.q
+  self.inp.s = NewTin.s or self.inp.s
+  self.inp.r = NewTin.r or self.inp.r
+  self.out.q = self.inp.s -bitnand- self.out.qn
+  self.out.qn = self.inp.r -bitnand- self.out.q
 end
 
 function ff_sr.new (Tin)
