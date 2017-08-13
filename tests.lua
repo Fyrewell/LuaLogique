@@ -49,12 +49,15 @@ print(string.split(str_in, '%%2C')[1])
 -- all is table
 GT = {}
 str_in = [===[ 
-{ckt   ={Out1={"(In1 -bitand- bitnot(In3)) -bitor- (In2 -bitand- In3)"}
-,inputs={"In1=0","In2=1","In3=0"}
-,inputSequence={In1="0,200;1,200;0,400;1,600",Infinity=true}}
+{
+outputs={"Out1"}
+,outputsVal={Out1="(In1 -bitand- bitnot(In3)) -bitor- (In2 -bitand- In3)"}
+,inputs={"In1","In2","In3"}
+,inputsVal={In1="0",In2="1",In3="0"}
+,inputSequence={In1="0,200;1,200;0,400;1,600",Infinity=true}
 ,pinMap={}
 }
 ]===]
 GT = loadstring('return '..str_in)()
-print(GT['ckt']['Out1'][1])
+print(GT['outputsVal']['Out1'])
 
